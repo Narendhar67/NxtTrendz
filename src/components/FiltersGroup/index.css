@@ -1,0 +1,70 @@
+.filters-group-container {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+@media screen and (min-width: 768px) {
+  .filters-group-container {
+    width: 30%;
+    max-width: 350px;
+    margin-top: 48px;
+    flex-shrink: 0;
+  }
+}
+
+/* Write your CSS here */
+.category-filter {
+  list-style-type: none;
+  padding-left: 0px;
+}
+.filter-heading {
+  font-weight: 600;
+  margin-bottom: 0px;
+  color: #0f172a;
+  margin-top: 25px;
+}
+.filter-button {
+  background-color: transparent;
+  border: none;
+  color: #475569;
+  font-weight: 600;
+  margin-top: 10px;
+  padding-left: 0px;
+}
+.filter-rating-button {
+  background-color: transparent;
+  border: none;
+  margin-top: 10px;
+  padding-left: 0px;
+  display: flex;
+  align-items: center;
+}
+.filter-rating-img {
+  height: 22px;
+  margin-right: 8px;
+}
+.clear-filter-button {
+  background-color: transparent;
+  color: #0967d2;
+  border: 2px solid #0967d2;
+  border-radius: 6px;
+  padding: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+}
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: #f1f5f9;
+  padding: 8px;
+  border-radius: 8px;
+}
+.search-element {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
