@@ -147,14 +147,26 @@ class AllProductsSection extends Component {
     this.setState({rating: '', category: '', searchQ: ''}, this.getProducts)
   }
 
+  renderNoProductsFound = () => (
+    <div className="failureView">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-no-products-view.png"
+        alt="no products"
+        className="failure-img"
+      />
+      <h1 className="failure-heading">No Products Found</h1>
+      <p className="failure-text">
+        We could not find any products. Try other filters
+      </p>
+    </div>
+  )
+
   renderProductsList = () => {
     const {productsList, activeOptionId} = this.state
-    if (productsList.length === 0) {
-      return this.renderNoProductsFound()
-    }
+    const result = productsList.length
 
     // TODO: Add No Products View
-    return (
+    return result > 0 ? (
       <div className="all-products-container">
         <ProductsHeader
           activeOptionId={activeOptionId}
@@ -167,6 +179,8 @@ class AllProductsSection extends Component {
           ))}
         </ul>
       </div>
+    ) : (
+      this.renderNoProductsFound()
     )
   }
 
@@ -190,20 +204,6 @@ class AllProductsSection extends Component {
         We are having some trouble processing your request.
       </p>
       <p className="failure-text">Please try again.</p>
-    </div>
-  )
-
-  renderNoProductsFound = () => (
-    <div className="failureView">
-      <img
-        src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-no-products-view.png"
-        alt="no products"
-        className="failure-img"
-      />
-      <h1 className="failure-heading">No Products Found</h1>
-      <p className="failure-text">
-        We could not find any products. Try other filters
-      </p>
     </div>
   )
 

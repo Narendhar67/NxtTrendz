@@ -18,12 +18,59 @@ const FiltersGroup = props => {
     updateSearch(event.target.value)
   }
 
-  const onCategoryChange = event => {
-    updateCategory(event.target.id)
-  }
-  const onRatingsChange = event => {
-    updateRatings(event.target.id)
-  }
+  const renderCategoryOptions = () => (
+    <ul className="category-filter">
+      <li>
+        <h1 className="filter-heading">Category</h1>
+      </li>
+      {categoryOptions.map(each => {
+        const onCategoryChange = () => {
+          updateCategory(each.categoryId)
+        }
+
+        return (
+          <li key={each.categoryId}>
+            <button
+              type="button"
+              onClick={onCategoryChange}
+              className="filter-button"
+            >
+              <p>{each.name}</p>
+            </button>
+          </li>
+        )
+      })}
+    </ul>
+  )
+
+  const renderRatingsOptions = () => (
+    <ul className="category-filter">
+      <li>
+        <h1 className="filter-heading">Rating</h1>
+      </li>
+      {ratingsList.map(each => {
+        const onRatingsChange = () => {
+          updateRatings(each.ratingId)
+        }
+        return (
+          <li key={each.ratingId}>
+            <button
+              type="button"
+              onClick={onRatingsChange}
+              className="filter-rating-button"
+            >
+              <img
+                className="filter-rating-img"
+                src={each.imageUrl}
+                alt={`rating ${each.ratingId}`}
+              />
+              <p>& up</p>
+            </button>
+          </li>
+        )
+      })}
+    </ul>
+  )
 
   const clearFilters = () => {
     onClearFilters()
@@ -37,7 +84,6 @@ const FiltersGroup = props => {
 
   return (
     <div className="filters-group-container">
-      <h1>Category</h1>
       {/* Replace this element with your code */}
       <div className="search-container">
         <input
@@ -51,45 +97,9 @@ const FiltersGroup = props => {
         <BiSearchAlt2 />
       </div>
 
-      <ul className="category-filter">
-        <li>
-          <p className="filter-heading">Category</p>
-        </li>
-        {categoryOptions.map(each => (
-          <li key={each.categoryId}>
-            <button
-              type="button"
-              onClick={onCategoryChange}
-              className="filter-button"
-              id={each.categoryId}
-            >
-              <p>{each.name}</p>
-            </button>
-          </li>
-        ))}
-      </ul>
-      <ul className="category-filter">
-        <li>
-          <p className="filter-heading">Rating</p>
-        </li>
-        {ratingsList.map(each => (
-          <li key={each.ratingId}>
-            <button
-              type="button"
-              onClick={onRatingsChange}
-              className="filter-rating-button"
-              id={each.ratingId}
-            >
-              <img
-                className="filter-rating-img"
-                src={each.imageUrl}
-                alt={`rating ${each.ratingId}`}
-              />
-              <p>& up</p>
-            </button>
-          </li>
-        ))}
-      </ul>
+      {renderCategoryOptions()}
+      {renderRatingsOptions()}
+
       <button
         onClick={clearFilters}
         className="clear-filter-button"
